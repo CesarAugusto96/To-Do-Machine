@@ -1,3 +1,4 @@
+import React from 'react';
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
@@ -8,7 +9,7 @@ import { CreateTodoButton } from './CreateTodoButton';
 
 //ToDos que aparecen por default en el interfaz de la app.
 const defaultToDos = [
-  { text: "Ir al Super", completed: false},
+  { text: "Ir al Super", completed: true},
   { text: "Reunión de trabajo", completed: true},
   { text: "Ir al nether", completed: true},
   { text: "Recoger al michi de la estética", completed: false},
@@ -28,24 +29,62 @@ usando solo <> </>
 */
 
 function App() {
+
+  const [todos, setTodos] = React.useState(defaultToDos);
+
+  const [searchValue, setSearchValue] = React.useState('');
+
+  const completedTodos = todos.filter(
+    todo => !!todo.completed).length;
+
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter(
+    (todo) => {
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+
+      return todoText.includes
+      (searchText);
+    }
+  );
+{
+    const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+
+    newTodos[todoIndex].completed = true;
+    setTodos(newTodos);
+  }
+}
+
+
   return (
-
-
 //Los componentes de React, se deben renderizar
 //con los simbolos <></>
 <>
 
 {/*Añadiendo los componente de react al componente principal*/}
 
-    <TodoCounter completed={3} total={5} />
-    <TodoSearch/>
+    <TodoCounter 
+      completed={completedTodos} 
+      total={totalTodos} 
+    />
+    <TodoSearch
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+    />
 
     <TodoList>
-      {defaultToDos.map(todo => (
+      {searchedTodos.map(todo => (
         <TodoItem 
-        key={todo.text} 
-        text={todo.text}
-        completed={todo.completed} 
+          key={todo.text} 
+          text={todo.text}
+          completed={todo.completed} 
+          onComplete={() => completeTodo(todo.text)}
+          onDelete={() => deleteTodo(todo.text)}
         />
       ))}
     </TodoList>
