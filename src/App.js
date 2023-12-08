@@ -29,11 +29,11 @@ usando solo <> </>
 */
 
 function App() {
-
-  const [todos, setTodos] = React.useState(defaultToDos);
+  const [todos, setTodos] = React.useState
+  (defaultToDos);
 
   const [searchValue, setSearchValue] = React.useState('');
-
+  
   const completedTodos = todos.filter(
     todo => !!todo.completed).length;
 
@@ -44,22 +44,27 @@ function App() {
       const todoText = todo.text.toLowerCase();
       const searchText = searchValue.toLowerCase();
 
-      return todoText.includes
-      (searchText);
+      return todoText.includes(searchText);
     }
   );
-{
-    const completeTodo = (text) => {
+  
+  const completeTodo = (text) => { 
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
       (todo) => todo.text == text
     );
-
     newTodos[todoIndex].completed = true;
     setTodos(newTodos);
-  }
-}
+  };
 
+  const deleteTodo = (text) => { 
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos);
+  };
 
   return (
 //Los componentes de React, se deben renderizar
