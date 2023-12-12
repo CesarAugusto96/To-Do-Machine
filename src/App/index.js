@@ -1,20 +1,10 @@
 import React from 'react';
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import { CreateTodoButton } from './CreateTodoButton';
-
-
-
-//ToDos que aparecen por default en el interfaz de la app.
-const defaultToDos = [
-  { text: "Ir al Super", completed: true},
-  { text: "Reunión de trabajo", completed: true},
-  { text: "Ir al nether", completed: true},
-  { text: "Recoger al michi de la estética", completed: false},
-];
-
+import { TodoCounter } from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch';
+import { TodoList } from '../TodoList';
+import { TodoItem } from '../TodoItem';
+import { CreateTodoButton } from '../CreateTodoButton';
+import { useLocalStorage } from './useLocalStorage';
 
 // Cuando el nombre de la función, empieza con letra
 //mayúscula, se trata de un componente de React.
@@ -28,43 +18,45 @@ importar: "import React from 'react';" ) o en su defecto,
 usando solo <> </> 
 */
 
+//CUSTOM HOOK
+
+
+
 function App() {
-  const [todos, setTodos] = React.useState
-  (defaultToDos);
-
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
-  
-  const completedTodos = todos.filter(
-    todo => !!todo.completed).length;
 
+  const completedTodos = todos.filter(
+    todo => !!todo.completed
+  ).length;
   const totalTodos = todos.length;
 
   const searchedTodos = todos.filter(
     (todo) => {
       const todoText = todo.text.toLowerCase();
       const searchText = searchValue.toLowerCase();
-
       return todoText.includes(searchText);
     }
   );
-  
-  const completeTodo = (text) => { 
+
+  const completeTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === text
     );
     newTodos[todoIndex].completed = true;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
-  const deleteTodo = (text) => { 
+  const deleteTodo = (text) => {
     const newTodos = [...todos];
     const todoIndex = newTodos.findIndex(
       (todo) => todo.text == text
     );
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
+
 
   return (
 //Los componentes de React, se deben renderizar
