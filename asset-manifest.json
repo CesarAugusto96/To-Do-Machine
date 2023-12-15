@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/https//CesarAugusto96.github.io/To-Do-Machine/static/css/main.72cabd65.css",
-    "main.js": "/https//CesarAugusto96.github.io/To-Do-Machine/static/js/main.01d7ef5f.js",
-    "index.html": "/https//CesarAugusto96.github.io/To-Do-Machine/index.html",
-    "static/media/delete.svg": "/https//CesarAugusto96.github.io/To-Do-Machine/static/media/delete.7018c4465589031bd51c8efbe21df9ca.svg",
-    "static/media/check.svg": "/https//CesarAugusto96.github.io/To-Do-Machine/static/media/check.e9a948bba52a34123d2ed7aeda0ea495.svg",
-    "main.72cabd65.css.map": "/https//CesarAugusto96.github.io/To-Do-Machine/static/css/main.72cabd65.css.map",
-    "main.01d7ef5f.js.map": "/https//CesarAugusto96.github.io/To-Do-Machine/static/js/main.01d7ef5f.js.map"
+    "main.css": "/https//cesaraugusto96.github.io/To-Do-Machine/static/css/main.72cabd65.css",
+    "main.js": "/https//cesaraugusto96.github.io/To-Do-Machine/static/js/main.e0f8709c.js",
+    "index.html": "/https//cesaraugusto96.github.io/To-Do-Machine/index.html",
+    "static/media/delete.svg": "/https//cesaraugusto96.github.io/To-Do-Machine/static/media/delete.7018c4465589031bd51c8efbe21df9ca.svg",
+    "static/media/check.svg": "/https//cesaraugusto96.github.io/To-Do-Machine/static/media/check.e9a948bba52a34123d2ed7aeda0ea495.svg",
+    "main.72cabd65.css.map": "/https//cesaraugusto96.github.io/To-Do-Machine/static/css/main.72cabd65.css.map",
+    "main.e0f8709c.js.map": "/https//cesaraugusto96.github.io/To-Do-Machine/static/js/main.e0f8709c.js.map"
   },
   "entrypoints": [
     "static/css/main.72cabd65.css",
-    "static/js/main.01d7ef5f.js"
+    "static/js/main.e0f8709c.js"
   ]
 }
