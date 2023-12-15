@@ -1,10 +1,13 @@
 import React from 'react';
+import { TodoContext } from '../TodoContext';
 import './TodoSearch.css';
 
-function TodoSearch({
-    searchValue,
-    setSearchValue,
-}) {
+function TodoSearch() {
+    const {
+        searchValue,
+        setSearchValue,
+    } = React.useContext(TodoContext);
+
 
 //El Código JS a contitnuación es para crear un actualizador
 //Del estado del valor "searchValue".
